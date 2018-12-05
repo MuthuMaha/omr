@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+ 
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -15,7 +15,7 @@ return [
 
    'defaults' => [
         'guard' => 'web',
-        'passwords' => 'employees',
+        'passwords' => 't_employee',
     ],
 
 
@@ -39,11 +39,19 @@ return [
     'guards' => [
        'web' => [
             'driver' => 'session',
-            'provider' => 'employees',
+            'provider' => 't_employee',
         ],
         'api' => [
             'driver' => 'passport',
-            'provider' => 'employees',
+            'provider' => 't_employee',
+        ],
+        't_student' => [
+            'driver' => 'session',
+            'provider' => 't_student',
+        ],
+        'tparent' => [
+            'driver' => 'session',
+            'provider' => 'tparent',
         ],
           'token' => [
             'driver'   => 'access_token',
@@ -72,14 +80,18 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-'employees' => [
+'t_employee' => [
             'driver' => 'eloquent',
             'model' => App\Employee::class,
         ],
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+'t_student' => [
+            'driver' => 'eloquent',
+            'model' => App\BaseModels\Student::class,
+        ],
+'tparent' => [
+            'driver' => 'eloquent',
+            'model' => App\Tparent::class,
+        ],
     ],
 
     /*
@@ -103,8 +115,18 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
- 'employees' => [
-            'provider' => 'employees',
+ 't_employee' => [
+            'provider' => 't_employee',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+ 't_student' => [
+            'provider' => 't_student',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+ 'tparent' => [
+            'provider' => 'tparent',
             'table' => 'password_resets',
             'expire' => 60,
         ],

@@ -24,6 +24,7 @@ Route::get('/user', function () {
 });
 // Route::group([ 'prefix' => 'token' ], function () {
 	Route::post('userLogin', 'AuthController@tokenAuthAttempt');
+	Route::post('resultLogin', 'ResultController@login');
 	Route::post('uploadResults','AuthController@upload');
 	Route::group([ 'middleware' => 'auth:token' ], function () {
 		
